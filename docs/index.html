@@ -14,6 +14,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#methods">Methods</a></li>
       <li><a href="#results">Results</a></li>
+      <li><a href="#genomic-survival-modeling">Genomic Survival Modeling</a>
       <li><a href="#team">Team</a></li>
     </ul>
   </nav>
@@ -201,6 +202,110 @@
           </figure>
 
         </div>
+      </div>
+    </section>
+
+        <section id="genomic-survival-modeling">
+      <div class="container">
+        <h2>Genomic Survival Modeling</h2>
+
+        <p>
+          After identifying latent clinicogenomic risk groups, I extended the analysis
+          to evaluate whether selected driver-gene mutations, representative
+          pathway-level alteration groups, and cumulative driver mutation burden were
+          associated with overall survival. This connects the unsupervised clustering
+          analysis with clinically adjusted survival modeling.
+        </p>
+
+        <h3>Gene-Level Mutation Associations</h3>
+
+        <p>
+          Selected driver-gene mutations were modeled individually using Cox
+          proportional hazards regression. Models were adjusted for age and tumor
+          stage and stratified by cancer type.
+        </p>
+
+        <figure>
+          <img src="figures/phase2_gene_cox_results.png" alt="Adjusted gene-level Cox model hazard ratios">
+          <figcaption>
+            Figure 9. Adjusted gene-level Cox model results for selected driver
+            mutations. Hazard ratios above 1 indicate higher mortality hazard, while
+            values below 1 indicate lower mortality hazard.
+          </figcaption>
+        </figure>
+
+        <h3>Pathway-Level Alteration Groups</h3>
+
+        <p>
+          To improve biological interpretability, selected genes were grouped into
+          representative pathway-level categories, including p53/genomic instability,
+          MAPK-related signaling, PI3K-AKT-related signaling, Wnt-related signaling,
+          and RNA-splicing-related alterations.
+        </p>
+
+        <figure>
+          <img src="figures/phase2_pathway_cox_results.png" alt="Adjusted pathway-level Cox model hazard ratios">
+          <figcaption>
+            Figure 10. Adjusted Cox model results for representative pathway-level
+            alteration groups. These groups are based on selected genes rather than
+            full pathway-wide annotation.
+          </figcaption>
+        </figure>
+
+        <h3>Driver Mutation Burden</h3>
+
+        <p>
+          I also summarized cumulative alteration burden by grouping patients according
+          to the number of selected driver-gene mutations: 0, 1, or 2 or more
+          mutations. Kaplan-Meier curves were used to visualize survival differences
+          across these mutation-burden groups.
+        </p>
+
+        <figure>
+          <img src="figures/phase2_mutation_burden_km.png" alt="Kaplan-Meier survival curves by mutation burden">
+          <figcaption>
+            Figure 11. Kaplan-Meier survival curves by selected driver mutation burden.
+            This visualization compares overall survival patterns across mutation-burden
+            groups.
+          </figcaption>
+        </figure>
+
+        <p>
+          An adjusted Cox model was then used to evaluate whether mutation burden was
+          associated with overall survival after accounting for age, tumor stage, and
+          cancer type.
+        </p>
+
+        <figure>
+          <img src="figures/phase2_mutation_burden_cox.png" alt="Adjusted Cox model for mutation burden">
+          <figcaption>
+            Figure 12. Adjusted Cox model for selected driver mutation burden.
+            Patients with 0 selected driver-gene mutations were used as the reference
+            group.
+          </figcaption>
+        </figure>
+
+        <h3>Integrated Interpretation</h3>
+
+        <p>
+          Together, the latent risk stratification and genomic survival modeling
+          analyses provide complementary views of survival heterogeneity in the
+          MSK-CHORD cohort. The clustering analysis identified broad clinicogenomic
+          patient subgroups, while the Cox models evaluated whether selected mutations,
+          pathway-level alteration groups, and mutation burden were associated with
+          overall survival after clinical adjustment.
+        </p>
+
+        <h3>Limitations</h3>
+
+        <p>
+          This analysis is based on selected driver genes rather than a complete
+          genome-wide mutation profile. The pathway-level groups are representative
+          summaries and should not be interpreted as full pathway annotations. Because
+          the cohort is observational, associations should not be interpreted as
+          causal. Cluster assignments also depend on the selected input features,
+          preprocessing choices, and clustering method.
+        </p>
       </div>
     </section>
 
