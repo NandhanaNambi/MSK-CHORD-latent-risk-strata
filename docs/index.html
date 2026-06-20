@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,368 +7,424 @@
   <title>Where Is the Survival Risk Hiding?</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <nav>
     <a class="nav-brand" href="#">Where Is the Survival Risk Hiding?</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#methods">Methods</a></li>
-      <li><a href="#results">Results</a></li>
-      <li><a href="#genomic-survival-modeling">Genomic Survival Modeling</a>
-      <li><a href="#key-findings">Key Findings</a>
-      <li><a href="#team">Team</a></li>
-    </ul>
+
+<ul class="nav-links">
+  <li><a href="#about">About</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#results">Results</a></li>
+  <li><a href="#genomic-survival-modeling">Genomic Survival Modeling</a></li>
+  <li><a href="#key-findings">Key Findings</a></li>
+  <li><a href="#team">Team</a></li>
+</ul>
   </nav>
 
   <div class="hero">
     <span class="tag">MSK-CHORD · 2026</span>
 
-    <h1>Where Is the Survival Risk Hiding?</h1>
+<h1>Where Is the Survival Risk Hiding?</h1>
 
-    <p class="subtitle">
-      We analyzed overall survival in 15,871 patients from the MSK-CHORD cohort
-      using clinicogenomic features and identified three latent patient subgroups
-      with distinct mutation patterns, clinical characteristics, and survival outcomes.
-    </p>
+<p class="subtitle">
+  This project explores survival heterogeneity in 15,871 patients from the
+  MSK-CHORD cohort by combining latent clinicogenomic risk stratification
+  with adjusted genomic survival modeling.
+</p>
 
-    <div class="hero-actions">
-      <a href="Interim_Report_Nandhana.pdf" class="btn-primary">Read report</a>
-      <a href="https://github.com/Nandhana/MSK-CHORD-latent-risk-strata" class="btn-outline" target="_blank">Code</a>
-      <a href="https://www.cbioportal.org/study/summary?id=msk_chord_2024" class="btn-outline" target="_blank">Data</a>
-    </div>
+<div class="hero-actions">
+  <a href="Interim_Report_Nandhana.pdf" class="btn-primary">Read report</a>
+  <a href="https://github.com/NandhanaNambi/MSK-CHORD-latent-risk-strata" class="btn-outline" target="_blank">Code</a>
+  <a href="https://www.cbioportal.org/study/summary?id=msk_chord_2024" class="btn-outline" target="_blank">Data</a>
+</div>
+    
   </div>
 
   <main>
-
-    <section id="about">
-      <div class="container">
-        <h2>About</h2>
-
-        <p>
-      The MSK-CHORD cohort is a large clinicogenomic cancer dataset containing integrated clinical variables, genomic mutation features, and survival outcomes. 
-      This project explores survival heterogeneity by combining latent patient risk stratification with adjusted genomic survival modeling.
-        </p>
-
-        <p>
-         A patient-level analytic dataset was constructed using age, tumor stage, cancer type, overall survival time, survival event status and binary mutation indicators for selected cancer driver genes. 
-         These features were used to identify hidden clinicogenomic patient subgroups and evaluate whether the resulting clusters corresponded to distinct survival risk profiles.
-        </p>
-
-        <p>
-        The analysis also evaluates selected driver-gene mutations, representative pathway-level alteration groups and cumulative driver mutation burden in relation to overall survival. 
-        Together, these approaches connect unsupervised subgroup discovery with clinically adjusted survival modeling.
-        </p>
-      </div>
-    </section>
-
-    <section id="methods">
-      <div class="container">
-        <h2>Methods</h2>
-
-        <p>
-          We constructed a clinicogenomic feature matrix consisting of age, tumor stage, and
-          binary mutation indicators for selected cancer driver genes. Continuous variables were
-          standardized prior to analysis to ensure comparability across features. Principal
-          Component Analysis (PCA) was applied to reduce dimensionality and visualize structure
-          in the feature space. K-means clustering was then used to identify latent patient
-          subgroups, with the number of clusters selected using the elbow method based on
-          within-cluster variation.
-        </p>
-
-        <p>
-          Following cluster assignment, overall survival differences were evaluated using
-          Kaplan–Meier estimation and compared using the log-rank test. Cox proportional hazards
-          regression was used to quantify the association between cluster membership and survival
-          risk. Results were interpreted in terms of both statistical significance and clinical relevance.
-        </p>
-
-        <ul>
-          <li>Primary outcome: overall survival</li>
-          <li>Feature matrix: age, tumor stage, and selected driver-gene mutation indicators</li>
-          <li>Dimensionality reduction: principal component analysis (PCA)</li>
-          <li>Clustering method: K-means clustering</li>
-          <li>Cluster selection: elbow method</li>
-          <li>Survival methods: Kaplan–Meier estimation, log-rank test, Cox regression</li>
-          <li>Software: R</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="results">
-      <div class="container">
-        <h2>Results</h2>
-
-        <p>
-          Three clinicogenomic patient subgroups were identified, each exhibiting distinct
-          survival patterns, clinical characteristics, and genomic profiles. The figures below
-          summarize the cohort-level survival pattern, clustering structure, and differences in
-          survival and feature distributions across the identified clusters.
-        </p>
-
-        <div class="fig-grid">
-
-          <figure>
-            <p class="fig-finding">
-              Overall survival varied substantially across the cohort, motivating the search for latent patient subgroups.
-            </p>
-            <img src="figures/figure1.png"
-                 alt="Kaplan-Meier curve showing overall survival in the MSK-CHORD baseline cohort">
-            <figcaption>
-              <strong>Figure 1.</strong> Kaplan–Meier estimate of overall survival in the MSK-CHORD baseline cohort.
-              Survival probability declines over time, indicating substantial heterogeneity in patient outcomes.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              Clinicogenomic features showed structured variation, suggesting the presence of latent patient subgroups.
-            </p>
-            <img src="figures/figure2.png"
-                 alt="PCA projection of clinicogenomic features">
-            <figcaption>
-              <strong>Figure 2.</strong> PCA projection of clinicogenomic features. The reduced feature space reveals
-              structured variation across patients, suggesting underlying subgroup structure.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              The elbow method supported a three-cluster solution for downstream subgroup identification.
-            </p>
-            <img src="figures/figure3.png"
-                 alt="Elbow plot for cluster selection">
-            <figcaption>
-              <strong>Figure 3.</strong> Elbow plot used to select the number of clusters. The within-cluster sum of
-              squares decreases with increasing cluster number, with an inflection around k = 3.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              The identified clusters showed clear and statistically significant differences in survival.
-            </p>
-            <img src="figures/figure4.png"
-                 alt="Kaplan-Meier survival curves stratified by clinicogenomic cluster">
-            <figcaption>
-              <strong>Figure 4.</strong> Kaplan–Meier survival curves stratified by clinicogenomic cluster.
-              The clusters show clear separation in survival outcomes, indicating meaningful survival risk stratification.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              Age differed moderately across clusters, but did not fully explain the observed subgroup structure.
-            </p>
-            <img src="figures/figure5.png"
-                 alt="Age distribution across identified clusters">
-            <figcaption>
-              <strong>Figure 5.</strong> Age distribution across clusters. Moderate differences are observed,
-              suggesting that age alone does not account for clustering patterns.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              Clusters associated with poorer survival showed a greater proportion of advanced-stage disease.
-            </p>
-            <img src="figures/figure6.png"
-                 alt="Tumor stage distribution across identified clusters">
-            <figcaption>
-              <strong>Figure 6.</strong> Tumor stage distribution across clusters. Clusters associated with poorer
-              outcomes show a higher proportion of Stage 4 disease.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              Partial separation in PCA space supported the presence of latent subgroup structure.
-            </p>
-            <img src="figures/figure7.png"
-                 alt="PCA plot with points colored by cluster assignment">
-            <figcaption>
-              <strong>Figure 7.</strong> PCA visualization of cluster assignments. Partial separation is observed
-              across clusters in the reduced feature space.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <p class="fig-finding">
-              Distinct mutation patterns across clusters suggested biologically meaningful subgroup differences.
-            </p>
-            <img src="figures/figure8.png"
-                 alt="Mutation prevalence across clinicogenomic clusters">
-            <figcaption>
-              <strong>Figure 8.</strong> Mutation prevalence across clusters. Differences in TP53, PTEN, KRAS,
-              and APC frequencies highlight biological variation between identified subgroups.
-            </figcaption>
-          </figure>
-
-        </div>
-      </div>
-    </section>
-
-        <section id="genomic-survival-modeling">
-      <div class="container">
-        <h2>Genomic Survival Modeling</h2>
-
-        <p>
-          After identifying latent clinicogenomic risk groups, I extended the analysis
-          to evaluate whether selected driver-gene mutations, representative
-          pathway-level alteration groups, and cumulative driver mutation burden were
-          associated with overall survival. This connects the unsupervised clustering
-          analysis with clinically adjusted survival modeling.
-        </p>
-
-        <h3>Gene-Level Mutation Associations</h3>
-
-        <p>
-          Selected driver-gene mutations were modeled individually using Cox
-          proportional hazards regression. Models were adjusted for age and tumor
-          stage and stratified by cancer type.
-        </p>
-
-        <figure>
-          <img src="figures/phase2_gene_cox_results.png" alt="Adjusted gene-level Cox model hazard ratios">
-          <figcaption>
-            Figure 9. Adjusted gene-level Cox model results for selected driver
-            mutations. Hazard ratios above 1 indicate higher mortality hazard, while
-            values below 1 indicate lower mortality hazard.
-          </figcaption>
-        </figure>
-
-        <h3>Pathway-Level Alteration Groups</h3>
-
-        <p>
-          To improve biological interpretability, selected genes were grouped into
-          representative pathway-level categories, including p53/genomic instability,
-          MAPK-related signaling, PI3K-AKT-related signaling, Wnt-related signaling,
-          and RNA-splicing-related alterations.
-        </p>
-
-        <figure>
-          <img src="figures/phase2_pathway_cox_results.png" alt="Adjusted pathway-level Cox model hazard ratios">
-          <figcaption>
-            Figure 10. Adjusted Cox model results for representative pathway-level
-            alteration groups. These groups are based on selected genes rather than
-            full pathway-wide annotation.
-          </figcaption>
-        </figure>
-
-        <h3>Driver Mutation Burden</h3>
-
-        <p>
-          I also summarized cumulative alteration burden by grouping patients according
-          to the number of selected driver-gene mutations: 0, 1, or 2 or more
-          mutations. Kaplan-Meier curves were used to visualize survival differences
-          across these mutation-burden groups.
-        </p>
-
-        <figure>
-          <img src="figures/phase2_mutation_burden_km.png" alt="Kaplan-Meier survival curves by mutation burden">
-          <figcaption>
-            Figure 11. Kaplan-Meier survival curves by selected driver mutation burden.
-            This visualization compares overall survival patterns across mutation-burden
-            groups.
-          </figcaption>
-        </figure>
-
-        <p>
-          An adjusted Cox model was then used to evaluate whether mutation burden was
-          associated with overall survival after accounting for age, tumor stage, and
-          cancer type.
-        </p>
-
-        <figure>
-          <img src="figures/phase2_mutation_burden_cox.png" alt="Adjusted Cox model for mutation burden">
-          <figcaption>
-            Figure 12. Adjusted Cox model for selected driver mutation burden.
-            Patients with 0 selected driver-gene mutations were used as the reference
-            group.
-          </figcaption>
-        </figure>
-
-        <h3>Integrated Interpretation</h3>
-
-        <p>
-          Together, the latent risk stratification and genomic survival modeling
-          analyses provide complementary views of survival heterogeneity in the
-          MSK-CHORD cohort. The clustering analysis identified broad clinicogenomic
-          patient subgroups, while the Cox models evaluated whether selected mutations,
-          pathway-level alteration groups, and mutation burden were associated with
-          overall survival after clinical adjustment.
-        </p>
-
-        <section id="key-findings">
+<section id="about">
   <div class="container">
-    <h2>Key Findings</h2>
+    <h2>About</h2>
 
-```
-<ul>
-  <li>
-    The final analytic cohort included 15,871 patients across five cancer
-    types, with 5,689 observed death events and an overall event rate of
-    35.8%.
-  </li>
+    <p>
+      The MSK-CHORD cohort is a large clinicogenomic cancer dataset containing
+      integrated clinical variables, genomic mutation features, and survival
+      outcomes. This project explores survival heterogeneity by combining
+      latent patient risk stratification with adjusted genomic survival modeling.
+    </p>
 
-  <li>
-    Latent risk stratification identified three clinicogenomic patient
-    subgroups with distinct survival patterns, clinical characteristics, and
-    mutation profiles.
-  </li>
+    <p>
+      A patient-level analytic dataset was constructed using age, tumor stage,
+      cancer type, overall survival time, survival event status, and binary
+      mutation indicators for selected cancer driver genes. These features
+      were used to identify hidden clinicogenomic patient subgroups and evaluate
+      whether the resulting clusters corresponded to distinct survival risk
+      profiles.
+    </p>
 
-  <li>
-    In adjusted gene-level Cox models, TP53 and KRAS mutations were
-    associated with higher mortality hazard, while APC and EGFR mutations
-    were associated with lower estimated hazard in this cohort.
-  </li>
-
-  <li>
-    Pathway-level modeling suggested higher hazard for selected p53/genomic
-    instability and MAPK-related alteration groups, while the selected
-    Wnt-related alteration group showed lower estimated hazard.
-  </li>
-
-  <li>
-    Patients with one or more selected driver-gene mutations had higher
-    adjusted mortality hazard compared with patients with zero selected
-    driver-gene mutations, suggesting that cumulative mutation burden may
-    capture additional survival risk information.
-  </li>
-
-  <li>
-    Overall, the project shows how unsupervised subgroup discovery and
-    adjusted survival modeling can provide complementary views of survival
-    heterogeneity in a clinicogenomic cancer cohort.
-  </li>
-</ul>
-```
-
+    <p>
+      The analysis also evaluates selected driver-gene mutations, representative
+      pathway-level alteration groups, and cumulative driver mutation burden in
+      relation to overall survival. Together, these approaches connect
+      unsupervised subgroup discovery with clinically adjusted survival modeling.
+    </p>
   </div>
 </section>
 
+<section id="methods">
+  <div class="container">
+    <h2>Methods</h2>
 
-        <h3>Limitations</h3>
+    <p>
+      A clinicogenomic feature matrix was constructed using age, tumor stage,
+      and binary mutation indicators for selected cancer driver genes.
+      Continuous variables were standardized prior to analysis to ensure
+      comparability across features. Principal Component Analysis (PCA) was
+      applied to reduce dimensionality and visualize structure in the feature
+      space.
+    </p>
 
-        <p>
-          This analysis is based on selected driver genes rather than a complete
-          genome-wide mutation profile. The pathway-level groups are representative
-          summaries and should not be interpreted as full pathway annotations. Because
-          the cohort is observational, associations should not be interpreted as
-          causal. Cluster assignments also depend on the selected input features,
-          preprocessing choices, and clustering method.
+    <p>
+      K-means clustering was used to identify latent patient subgroups, with
+      the number of clusters selected using the elbow method based on
+      within-cluster variation. Following cluster assignment, overall survival
+      differences were evaluated using Kaplan-Meier estimation and compared
+      using the log-rank test. Cox proportional hazards regression was used to
+      quantify the association between cluster membership and survival risk.
+    </p>
+
+    <p>
+      Additional Cox proportional hazards models were fit to evaluate selected
+      driver-gene mutations, representative pathway-level alteration groups,
+      and cumulative driver mutation burden in relation to overall survival.
+      These models were adjusted for age and tumor stage and stratified by
+      cancer type to account for broad differences across cancer diagnoses.
+      Hazard ratios were interpreted as relative mortality hazard estimates
+      associated with each genomic feature or mutation-burden category.
+    </p>
+
+    <ul>
+      <li>Primary outcome: overall survival</li>
+      <li>Feature matrix: age, tumor stage, cancer type, and selected driver-gene mutation indicators</li>
+      <li>Dimensionality reduction: principal component analysis</li>
+      <li>Clustering method: K-means clustering</li>
+      <li>Cluster selection: elbow method</li>
+      <li>Survival methods: Kaplan-Meier estimation, log-rank test, and Cox proportional hazards regression</li>
+      <li>Genomic modeling: selected driver genes, pathway-level alteration groups, and mutation burden</li>
+      <li>Software: R</li>
+    </ul>
+  </div>
+</section>
+
+<section id="results">
+  <div class="container">
+    <h2>Results</h2>
+
+    <p>
+      Three clinicogenomic patient subgroups were identified, each exhibiting
+      distinct survival patterns, clinical characteristics, and genomic profiles.
+      The figures below summarize the cohort-level survival pattern, clustering
+      structure, and differences in survival and feature distributions across
+      the identified clusters.
+    </p>
+
+    <div class="fig-grid">
+
+      <figure>
+        <p class="fig-finding">
+          Overall survival varied substantially across the cohort, motivating
+          the search for latent patient subgroups.
         </p>
-      </div>
-    </section>
 
-    <section id="team">
-      <div class="container">
-        <h2>Team</h2>
-        <ul>
-          <li>Nandhana Nambi · University of Michigan</li>
-        </ul>
-      </div>
-    </section>
+        <img src="figures/figure1.png"
+             alt="Kaplan-Meier curve showing overall survival in the MSK-CHORD baseline cohort">
+
+        <figcaption>
+          <strong>Figure 1.</strong> Kaplan-Meier estimate of overall survival
+          in the MSK-CHORD baseline cohort. Survival probability declines over
+          time, indicating substantial heterogeneity in patient outcomes.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Clinicogenomic features showed structured variation, suggesting the
+          presence of latent patient subgroups.
+        </p>
+
+        <img src="figures/figure2.png"
+             alt="PCA projection of clinicogenomic features">
+
+        <figcaption>
+          <strong>Figure 2.</strong> PCA projection of clinicogenomic features.
+          The reduced feature space reveals structured variation across
+          patients, suggesting underlying subgroup structure.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          The elbow method supported a three-cluster solution for downstream
+          subgroup identification.
+        </p>
+
+        <img src="figures/figure3.png"
+             alt="Elbow plot for cluster selection">
+
+        <figcaption>
+          <strong>Figure 3.</strong> Elbow plot used to select the number of
+          clusters. The within-cluster sum of squares decreases with increasing
+          cluster number, with an inflection around k = 3.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          The identified clusters showed clear and statistically significant
+          differences in survival.
+        </p>
+
+        <img src="figures/figure4.png"
+             alt="Kaplan-Meier survival curves stratified by clinicogenomic cluster">
+
+        <figcaption>
+          <strong>Figure 4.</strong> Kaplan-Meier survival curves stratified
+          by clinicogenomic cluster. The clusters show clear separation in
+          survival outcomes, indicating meaningful survival risk stratification.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Age differed moderately across clusters, but did not fully explain
+          the observed subgroup structure.
+        </p>
+
+        <img src="figures/figure5.png"
+             alt="Age distribution across identified clusters">
+
+        <figcaption>
+          <strong>Figure 5.</strong> Age distribution across clusters.
+          Moderate differences are observed, suggesting that age alone does
+          not account for clustering patterns.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Clusters associated with poorer survival showed a greater proportion
+          of advanced-stage disease.
+        </p>
+
+        <img src="figures/figure6.png"
+             alt="Tumor stage distribution across identified clusters">
+
+        <figcaption>
+          <strong>Figure 6.</strong> Tumor stage distribution across clusters.
+          Clusters associated with poorer outcomes show a higher proportion of
+          Stage 4 disease.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Partial separation in PCA space supported the presence of latent
+          subgroup structure.
+        </p>
+
+        <img src="figures/figure7.png"
+             alt="PCA plot with points colored by cluster assignment">
+
+        <figcaption>
+          <strong>Figure 7.</strong> PCA visualization of cluster assignments.
+          Partial separation is observed across clusters in the reduced feature
+          space.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Distinct mutation patterns across clusters suggested biologically
+          meaningful subgroup differences.
+        </p>
+
+        <img src="figures/figure8.png"
+             alt="Mutation prevalence across clinicogenomic clusters">
+
+        <figcaption>
+          <strong>Figure 8.</strong> Mutation prevalence across clusters.
+          Differences in TP53, PTEN, KRAS, and APC frequencies highlight
+          biological variation between identified subgroups.
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<section id="genomic-survival-modeling">
+  <div class="container">
+    <h2>Genomic Survival Modeling</h2>
+
+    <p>
+      After latent clinicogenomic risk groups were identified, the analysis
+      was extended to evaluate whether selected driver-gene mutations,
+      representative pathway-level alteration groups, and cumulative driver
+      mutation burden were associated with overall survival. This connects
+      unsupervised subgroup discovery with clinically adjusted survival modeling.
+    </p>
+
+    <div class="fig-grid">
+
+      <figure>
+        <p class="fig-finding">
+          Selected driver-gene mutations showed different adjusted associations
+          with overall survival.
+        </p>
+
+        <img src="figures/phase2_gene_cox_results.png"
+             alt="Adjusted gene-level Cox model hazard ratios">
+
+        <figcaption>
+          <strong>Figure 9.</strong> Adjusted gene-level Cox model results
+          for selected driver mutations. Hazard ratios above 1 indicate higher
+          mortality hazard, while values below 1 indicate lower estimated
+          hazard. Models were adjusted for age and tumor stage and stratified
+          by cancer type.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Representative pathway-level alteration groups provided a more
+          biologically interpretable view of mutation-survival associations.
+        </p>
+
+        <img src="figures/phase2_pathway_cox_results.png"
+             alt="Adjusted pathway-level Cox model hazard ratios">
+
+        <figcaption>
+          <strong>Figure 10.</strong> Adjusted Cox model results for selected
+          pathway-level alteration groups. These groups summarize representative
+          genes, including p53/genomic instability, MAPK-related signaling,
+          PI3K-AKT-related signaling, Wnt-related signaling, and
+          RNA-splicing-related alterations.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Survival patterns differed across selected driver mutation-burden
+          groups.
+        </p>
+
+        <img src="figures/phase2_mutation_burden_km.png"
+             alt="Kaplan-Meier survival curves by mutation burden">
+
+        <figcaption>
+          <strong>Figure 11.</strong> Kaplan-Meier survival curves by selected
+          driver mutation burden. Patients were grouped as having 0, 1, or
+          2 or more selected driver-gene mutations.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <p class="fig-finding">
+          Higher selected driver mutation burden was associated with higher
+          adjusted mortality hazard compared with zero selected driver mutations.
+        </p>
+
+        <img src="figures/phase2_mutation_burden_cox.png"
+             alt="Adjusted Cox model for mutation burden">
+
+        <figcaption>
+          <strong>Figure 12.</strong> Adjusted Cox model for selected driver
+          mutation burden. Patients with 0 selected driver-gene mutations were
+          used as the reference group.
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <h3>Integrated Interpretation</h3>
+
+    <p>
+      Together, the latent risk stratification and genomic survival modeling
+      analyses provide complementary views of survival heterogeneity in the
+      MSK-CHORD cohort. The clustering analysis identified broad clinicogenomic
+      patient subgroups, while the Cox models evaluated whether selected
+      mutations, pathway-level alteration groups, and mutation burden were
+      associated with overall survival after clinical adjustment.
+    </p>
+
+    <h3>Limitations</h3>
+
+    <p>
+      This analysis is based on selected driver genes rather than a complete
+      genome-wide mutation profile. The pathway-level groups are representative
+      summaries and should not be interpreted as full pathway annotations.
+      Because the cohort is observational, associations should not be interpreted
+      as causal. Cluster assignments also depend on the selected input features,
+      preprocessing choices, and clustering method.
+    </p>
+  </div>
+</section>
+
+<section id="key-findings">
+  <div class="container">
+    <h2>Key Findings</h2>
+
+    <ul>
+      <li>
+        The final analytic cohort included 15,871 patients across five cancer
+        types, with 5,689 observed death events and an overall event rate of
+        35.8%.
+      </li>
+
+      <li>
+        Latent risk stratification identified three clinicogenomic patient
+        subgroups with distinct survival patterns, clinical characteristics,
+        and mutation profiles.
+      </li>
+
+      <li>
+        In adjusted gene-level Cox models, TP53 and KRAS mutations were
+        associated with higher mortality hazard, while APC and EGFR mutations
+        were associated with lower estimated hazard in this cohort.
+      </li>
+
+      <li>
+        Pathway-level modeling suggested higher hazard for selected
+        p53/genomic instability and MAPK-related alteration groups, while the
+        selected Wnt-related alteration group showed lower estimated hazard.
+      </li>
+
+      <li>
+        Patients with one or more selected driver-gene mutations had higher
+        adjusted mortality hazard compared with patients with zero selected
+        driver-gene mutations.
+      </li>
+
+      <li>
+        Overall, the project shows how unsupervised subgroup discovery and
+        adjusted survival modeling can provide complementary views of survival
+        heterogeneity in a clinicogenomic cancer cohort.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <h2>Team</h2>
+
+    <ul>
+      <li>Nandhana Nambi · University of Michigan</li>
+    </ul>
+  </div>
+</section>
+
 
   </main>
 
@@ -377,9 +434,10 @@
       <a href="https://www.cbioportal.org/" target="_blank">cBioPortal</a>
       under controlled access. Analysis code is freely available.
     </p>
-    <p>
-      Questions? <a href="mailto:nandhana@umich.edu">nandhana@umich.edu</a>
-    </p>
+<p>
+  Questions? <a href="mailto:nandhana@umich.edu">nandhana@umich.edu</a>
+</p>
+
   </footer>
 
 </body>
