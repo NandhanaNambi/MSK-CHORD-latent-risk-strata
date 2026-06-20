@@ -15,6 +15,7 @@
       <li><a href="#methods">Methods</a></li>
       <li><a href="#results">Results</a></li>
       <li><a href="#genomic-survival-modeling">Genomic Survival Modeling</a>
+      <li><a href="#key-findings">Key Findings</a>
       <li><a href="#team">Team</a></li>
     </ul>
   </nav>
@@ -44,17 +45,18 @@
         <h2>About</h2>
 
         <p>
-          The MSK-CHORD cohort is a large clinicogenomic cancer dataset containing
-          integrated clinical variables, genomic mutation data, and survival outcomes.
-          In this project, we explored whether hidden patient structure could be identified
-          using combined genomic and clinical features.
+      The MSK-CHORD cohort is a large clinicogenomic cancer dataset containing integrated clinical variables, genomic mutation features, and survival outcomes. 
+      This project explores survival heterogeneity by combining latent patient risk stratification with adjusted genomic survival modeling.
         </p>
 
         <p>
-          Our primary outcome was overall survival. We constructed a patient-level dataset
-          using age, tumor stage, and binary mutation indicators for key cancer driver genes
-          including TP53, KRAS, APC, EGFR, BRAF, PTEN, and RBM10. We then evaluated whether
-          the resulting patient subgroups corresponded to distinct survival risk profiles.
+         A patient-level analytic dataset was constructed using age, tumor stage, cancer type, overall survival time, survival event status and binary mutation indicators for selected cancer driver genes. 
+         These features were used to identify hidden clinicogenomic patient subgroups and evaluate whether the resulting clusters corresponded to distinct survival risk profiles.
+        </p>
+
+        <p>
+        The analysis also evaluates selected driver-gene mutations, representative pathway-level alteration groups and cumulative driver mutation burden in relation to overall survival. 
+        Together, these approaches connect unsupervised subgroup discovery with clinically adjusted survival modeling.
         </p>
       </div>
     </section>
@@ -295,6 +297,55 @@
           pathway-level alteration groups, and mutation burden were associated with
           overall survival after clinical adjustment.
         </p>
+
+        <section id="key-findings">
+  <div class="container">
+    <h2>Key Findings</h2>
+
+```
+<ul>
+  <li>
+    The final analytic cohort included 15,871 patients across five cancer
+    types, with 5,689 observed death events and an overall event rate of
+    35.8%.
+  </li>
+
+  <li>
+    Latent risk stratification identified three clinicogenomic patient
+    subgroups with distinct survival patterns, clinical characteristics, and
+    mutation profiles.
+  </li>
+
+  <li>
+    In adjusted gene-level Cox models, TP53 and KRAS mutations were
+    associated with higher mortality hazard, while APC and EGFR mutations
+    were associated with lower estimated hazard in this cohort.
+  </li>
+
+  <li>
+    Pathway-level modeling suggested higher hazard for selected p53/genomic
+    instability and MAPK-related alteration groups, while the selected
+    Wnt-related alteration group showed lower estimated hazard.
+  </li>
+
+  <li>
+    Patients with one or more selected driver-gene mutations had higher
+    adjusted mortality hazard compared with patients with zero selected
+    driver-gene mutations, suggesting that cumulative mutation burden may
+    capture additional survival risk information.
+  </li>
+
+  <li>
+    Overall, the project shows how unsupervised subgroup discovery and
+    adjusted survival modeling can provide complementary views of survival
+    heterogeneity in a clinicogenomic cancer cohort.
+  </li>
+</ul>
+```
+
+  </div>
+</section>
+
 
         <h3>Limitations</h3>
 
